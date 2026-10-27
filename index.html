@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja do Zé</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="toldo">
+        <h1>Loja do Zé</h1>
+        <p>Categorias e produtos da casa</p>
+    </header>
+
+    <main class="paginas">
+        <section class="bloco" aria-labelledby="titulo-categoria">
+            <h2 id="titulo-categoria">Nova categoria</h2>
+            <form id="form-categoria" class="formulario">
+                <input type="text" id="descricao" placeholder="Ex.: Brinquedos" aria-label="Nome da categoria" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <p id="mensagem" class="mensagem" role="status"></p>
+
+            <h2>Categorias</h2>
+            <ul id="lista-categorias" class="lista"></ul>
+        </section>
+
+        <section class="bloco" aria-labelledby="titulo-produto">
+            <h2 id="titulo-produto">Novo produto</h2>
+            <form id="form-produto" class="formulario">
+                <input type="hidden" id="produto-id">
+                <input type="text" id="produto-descricao" placeholder="Ex.: Bicicleta" aria-label="Nome do produto" required>
+                <input type="number" id="produto-preco" placeholder="Preço (R$)" aria-label="Preço" step="0.01" min="0" required>
+                <select id="produto-categoria" aria-label="Categoria" required>
+                    <option value="">Selecione a categoria</option>
+                </select>
+                <div class="acoes">
+                    <button type="submit" id="btn-produto">Cadastrar</button>
+                    <button type="button" id="btn-cancelar-produto" class="secundario" hidden>Cancelar</button>
+                </div>
+            </form>
+            <p id="mensagem-produto" class="mensagem" role="status"></p>
+
+            <h2>Produtos</h2>
+            <ul id="lista-produtos" class="lista"></ul>
+        </section>
+    </main>
+
+    <!-- Abra por http://localhost:3001 (npm start), não pelo Live Server -->
+    <script src="app.js"></script>
+</body>
+</html>

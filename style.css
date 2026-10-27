@@ -1,0 +1,192 @@
+:root {
+    --fundo: #e8eef0;
+    --superficie: #ffffff;
+    --tinta: #1b2a33;
+    --tinta-suave: #52656f;
+    --linha: #cbd7dc;
+    --toldo-a: #1f6f78;
+    --toldo-b: #f2f7f7;
+    --destaque: #f2b632;
+    --destaque-escuro: #d99c12;
+    --erro: #b3261e;
+    --sucesso: #1d6b43;
+    --raio: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+/* Toldo da loja: a única "ousadia" visual da página */
+.toldo {
+    padding: 2.5rem 1.5rem 3.25rem;
+    text-align: center;
+    color: #fff;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--toldo-a) 0 56px,
+        var(--toldo-b) 56px 112px
+    );
+    border-bottom: 8px solid var(--tinta);
+    margin-bottom: 2.5rem;
+}
+
+.toldo h1, .toldo p {
+    display: inline-block;
+    margin: 0;
+    padding: 0.35rem 1.25rem;
+    background: var(--tinta);
+    border-radius: var(--raio);
+}
+
+.toldo h1 {
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.toldo p {
+    display: block;
+    width: fit-content;
+    margin: 0.6rem auto 0;
+    padding: 0.2rem 0.9rem;
+    font-size: 0.95rem;
+    background: var(--destaque);
+    color: var(--tinta);
+    font-weight: 600;
+}
+
+.paginas {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+    align-items: start;
+}
+
+.bloco {
+    background: var(--superficie);
+    border: 1px solid var(--linha);
+    border-radius: var(--raio);
+    padding: 1.5rem;
+}
+
+h2 {
+    margin: 0 0 0.85rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.bloco h2:not(:first-child) {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--linha);
+}
+
+/* Formulários */
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    flex: 1 1 160px;
+    min-width: 0;
+    padding: 0.6rem 0.75rem;
+    font: inherit;
+    color: var(--tinta);
+    background: #fff;
+    border: 1px solid #9fb0b8;
+    border-radius: var(--raio);
+}
+
+input::placeholder { color: var(--tinta-suave); opacity: 0.8; }
+
+select { flex-basis: 100%; }
+
+.acoes { display: flex; gap: 0.6rem; flex-basis: 100%; }
+
+button {
+    padding: 0.6rem 1.1rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--tinta);
+    background: var(--destaque);
+    border: 1px solid var(--destaque-escuro);
+    border-radius: var(--raio);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+button:hover { background: var(--destaque-escuro); }
+
+button.secundario {
+    background: transparent;
+    border-color: #9fb0b8;
+    font-weight: 600;
+}
+
+button.secundario:hover { background: var(--fundo); }
+
+button.pequeno { padding: 0.25rem 0.7rem; font-size: 0.9rem; }
+
+[hidden] { display: none !important; }
+
+:focus-visible {
+    outline: 3px solid var(--toldo-a);
+    outline-offset: 2px;
+}
+
+/* Mensagens */
+.mensagem {
+    min-height: 1.5rem;
+    margin: 0.6rem 0 0;
+    font-weight: 600;
+    color: var(--sucesso);
+}
+
+.mensagem.erro { color: var(--erro); }
+
+/* Listas */
+.lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lista li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--linha);
+}
+
+.lista li:last-child { border-bottom: 0; }
+
+.lista li.vazio {
+    color: var(--tinta-suave);
+    justify-content: flex-start;
+}
+
+@media (max-width: 760px) {
+    .paginas { grid-template-columns: minmax(0, 1fr); }
+    .toldo { padding-top: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+}
